@@ -1,0 +1,27 @@
+{
+  "name": "mcms",
+  "version": "0.0.1",
+  "description": "a simple corejs cms",
+  "main": "bootup.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/influx6/mcms"
+  },
+  "keywords": [
+    "cms",
+    "corejs",
+    "app"
+  ],
+  "author": "Alexander Ewetumo",
+  "license": "Mit",
+  "readmeFilename": "README.md",
+  "dependencies":{
+      "corejs": ">= 0.0.1",
+      "tsk":">= 0.3.0",
+      "storejs":">= 0.0.1",
+      "router":">= 0.0.1"
+  }
+}
