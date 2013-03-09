@@ -14,7 +14,7 @@ module.exports = function(exts){
 		app.channel.add('shutdown',function(){});
 
 		app.channel.add('request',function(){});
-		app.channel.add('save',function(){});
+		app.channel.add('create',function(){});
 		app.channel.add('delete',function(){});
 		app.channel.add('update',function(){});
 
