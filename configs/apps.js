@@ -13,9 +13,11 @@ var exts = require('./exts.js'),
 
 	// loadup center apps
 	settings.use('core').core(mcms,apps).loadApps('boot.js',function(){
-		// console.log(mcms);
 		mcms.boot();
 	});
+
+	//setup up some autoload
+	// mcms.facade.fsl.add('core.permissions',exts.path.resolve('./permissions'));
 
 
 module.exports = { exts:exts, settings: settings, core: mcms };

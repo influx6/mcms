@@ -1,6 +1,11 @@
 module.exports = {
 	
 	admin:{
+		global: {
+			request: true,
+			requestAll: true,
+		},
+
 		photos:{
 			request: true,
 			destroy: true,
