@@ -8,6 +8,9 @@ var system = require('./configs/apps.js'),
 	server = exts.router.Router(exts.http.createServer());
 // if(NODE_ENV['development'])
 // console.log(system,process.env)
+	// core.authorizeBox(server,{
+	// 	admin: { all: true }
+	// });
 
 	server.get('/admins',function(req,res,next){
 		facade.request('admin','all',{ start: 1, end:30}).done(function(o){
@@ -21,21 +24,6 @@ var system = require('./configs/apps.js'),
 		});
 	});
 
-
-	server.get('/admin/:id',function(req,res,next){
-		res.end('golden baby!');
-		next();
-	});
-
-	server.get('/admin/:text',function(req,res,next){
-		res.end('goldentext baby!');
-		next();
-	});
-
-	// server.get(/admin\/\d/,function(req,res,next){
-	// 	res.end('golden baby!');
-	// 	next();
-	// });
 
 	server.listen(3000);
 
