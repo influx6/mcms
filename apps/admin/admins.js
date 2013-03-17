@@ -4,15 +4,7 @@ module.exports = function(exts){
 
 		var authenticate = false,
 		app = exts.corejs.Core.createAppShell(channel,facade);
-		// app.ready = exts.ts.Promise.create();
 		// app.store = exts.storejs.NanoCouchdb.use('admins');
-		app.route = {
-			'requestAll':'all',
-			'request':'get',
-			'requestCreate':'save',
-			'requestDestroy':'destroy',
-			'requestUpdate':'update'
-		}
 
 		app.boot = function(username,password){
 			if(username && password) authenticate = true;
@@ -22,6 +14,7 @@ module.exports = function(exts){
 				admins: (authenticate) ? true : false 
 			});
 		};
+		
 		app.reboot = function(){};
 		app.shutdown = function(){
 			if(!this.store) return;
@@ -36,24 +29,23 @@ module.exports = function(exts){
 			app.shutdown.apply(app,arguments);
 		});
 
-		app.channel.add('requestAll',function(promise){
-			console.log(promise);
+		app.channel.add('all',function(query,promise){
 			app.store.all().then(promise.resolve,promise.reject,promise.notify);
 		});
 
-		app.channel.add('request',function(id,promise){
+		app.channel.add('get',function(query,promise){
 			app.store.get(id).then(promise.resolve,promise.reject,promise.notify);
 		});
 
-		app.channel.add('requestCreate',function(id,doc,promise){
-			app.store.create(id).then(promise.resolve,promise.reject,promise.notify);
+		app.channel.add('create',function(query,promise){
+			app.store.create(query.id,query.doc).then(promise.resolve,promise.reject,promise.notify);
 		});
 
-		app.channel.add('requestDestroy',function(id,fn,err){
+		app.channel.add('destroy',function(query,promise){
 			app.store.destroy(id).then(promise.resolve,promise.reject,promise.notify);
 		});
 
-		app.channel.add('requestUpdate',function(id,doc,fn,err){
+		app.channel.add('update',function(query,promise){
 			app.store.update(id,doc).then(promise.resolve,promise.reject,promise.notify);
 		});
 

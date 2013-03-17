@@ -10,7 +10,7 @@ var system = require('./configs/apps.js'),
 // console.log(system,process.env)
 
 	server.get('/admins',function(req,res,next){
-		facade.request('admin','requestAll').done(function(o){
+		facade.request('admin','all',{ start: 1, end:30}).done(function(o){
 			res.setStatus(200).setContent('text/plain').pushHead();
 			res.end(JSON.stringify(o));
 			next();
@@ -22,9 +22,21 @@ var system = require('./configs/apps.js'),
 	});
 
 
+	server.get('/admin/:id',function(req,res,next){
+		res.end('golden baby!');
+		next();
+	});
+
+	server.get('/admin/:text',function(req,res,next){
+		res.end('goldentext baby!');
+		next();
+	});
+
+	// server.get(/admin\/\d/,function(req,res,next){
+	// 	res.end('golden baby!');
+	// 	next();
+	// });
 
 	server.listen(3000);
 
 
-	
-	

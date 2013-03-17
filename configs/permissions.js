@@ -3,7 +3,7 @@ module.exports = {
 	admin:{
 		global: {
 			request: true,
-			requestAll: true,
+			all: true,
 		},
 
 		photos:{
