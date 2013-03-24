@@ -8,6 +8,7 @@ exts.fs = require('fs');
 //major libraries
 exts.ts = require('tsk').ToolStack;
 exts.corejs = require('corejs');
+exts.settings = require('configtor')();
 exts.storejs = require('storejs');
 exts.router = require('router');
 exts.watcher = require('watcherjs');
@@ -19,11 +20,12 @@ exts.router = require('router');
 
 //initialize the library
 exts.corejs.Core = exts.corejs.Core(exts.ts);
+require('configtor/configs/fs')(exts.settings);
 
 //major utilities
 exts.util = exts.ts.Utility;
 
 //loadup configurations
-exts.settings = require('../exts/configurations');
+require('../exts/configurations')(exts.settings,exts.util);
 
 // module.exports = exts;
