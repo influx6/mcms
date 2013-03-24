@@ -14,7 +14,7 @@ exts.watcher = require('watcherjs');
 exts.fsl = require('fsl');
 exts.lessy = require('lessy');
 exts.http = require('http');
-// exts.express = require('express');
+exts.express = require('express');
 exts.router = require('router');
 
 //initialize the library

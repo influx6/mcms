@@ -27,7 +27,7 @@ module.exports = (function(){
 				throw new Error(e," feature does not exist on Object",fo);
 			});
 		},
-		processDir: function(appdir,search,onComplete,onEach){
+		dir: function(appdir,search,onComplete,onEach){
 			if(!onEach) onEach = function(o){ return require(o); }
 			var loaded = {};
 			extcg.use('dirs').scan(appdir,function(app,ind){
@@ -50,14 +50,14 @@ module.exports = (function(){
 			fo.appdir = appdir;
 
 			return {
-				loadApps: function(search,complete,each){
+				loadUp: function(search,complete,each){
 					var each = each || function(o){ 
 						o = require(o);
 						if(o && util.isFunction(o)) o(fo.core.facade);
 						return o;
 					};
-					utild.processDir(fo.appdir,search,complete,each)
-				}
+					utild.dir(fo.appdir,search,complete,each)
+				},
 			}
 		},
 
